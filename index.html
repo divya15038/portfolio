@@ -158,7 +158,8 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>Copyright @ Divya. Made with <i class="fa-solid fa-heart"></i></p>
+                <p>Number of visits:</p>
+                <p id="counter"></p>
             </div>
         </div>
         <script>
@@ -204,5 +205,19 @@
                 .catch(error => console.error('Error!', error.message))
             })
           </script>
+        <script>
+            const count = document.getElementById("counter");
+            incrementVisitsCount();
+
+            function incrementVisitsCount() {
+                let visits;
+                if(!localStorage.getItem("visits")) localStorage.setItem("visits", 1);
+                visits = +localStorage.getItem("visits");
+                const incrementedCount = visits + 1;
+                localStorage.setItem("visits", incrementedCount);
+
+                count.innerText = localStorage.getItem("visits");
+            }
+        </script>     
     </body>
 </html>
